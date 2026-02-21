@@ -1,0 +1,133 @@
+{
+  "agent_id": "AGENT-TEST-001",
+  "timestamp": "2026-02-20T22:40:52.514585",
+  "state": {
+    "agent_id": "AGENT-TEST-001",
+    "status": "executing",
+    "current_task": "Test harvest optimization",
+    "decisions_made": 0,
+    "success_rate": 0.0,
+    "uptime_hours": 0.0,
+    "last_decision_at": null,
+    "created_at": "2026-02-20T22:40:52.510584",
+    "updated_at": "2026-02-20T22:40:52.512583"
+  },
+  "short_term_memory": [
+    {
+      "type": "observation",
+      "content": "Observation 3",
+      "confidence": 0.8200000000000001,
+      "timestamp": "2026-02-20T22:40:52.512583",
+      "ttl_expires_at": "2026-02-20T23:40:52.512583"
+    },
+    {
+      "type": "observation",
+      "content": "Observation 4",
+      "confidence": 0.8300000000000001,
+      "timestamp": "2026-02-20T22:40:52.512583",
+      "ttl_expires_at": "2026-02-20T23:40:52.512583"
+    },
+    {
+      "type": "observation",
+      "content": "Observation 5",
+      "confidence": 0.8400000000000001,
+      "timestamp": "2026-02-20T22:40:52.512583",
+      "ttl_expires_at": "2026-02-20T23:40:52.512583"
+    },
+    {
+      "type": "observation",
+      "content": "Observation 6",
+      "confidence": 0.8500000000000001,
+      "timestamp": "2026-02-20T22:40:52.512583",
+      "ttl_expires_at": "2026-02-20T23:40:52.512583"
+    },
+    {
+      "type": "observation",
+      "content": "Observation 7",
+      "confidence": 0.8600000000000001,
+      "timestamp": "2026-02-20T22:40:52.512583",
+      "ttl_expires_at": "2026-02-20T23:40:52.512583"
+    },
+    {
+      "type": "observation",
+      "content": "Observation 8",
+      "confidence": 0.8700000000000001,
+      "timestamp": "2026-02-20T22:40:52.512583",
+      "ttl_expires_at": "2026-02-20T23:40:52.512583"
+    },
+    {
+      "type": "observation",
+      "content": "Observation 9",
+      "confidence": 0.88,
+      "timestamp": "2026-02-20T22:40:52.512583",
+      "ttl_expires_at": "2026-02-20T23:40:52.512583"
+    },
+    {
+      "type": "observation",
+      "content": "Observation 10",
+      "confidence": 0.89,
+      "timestamp": "2026-02-20T22:40:52.512583",
+      "ttl_expires_at": "2026-02-20T23:40:52.512583"
+    },
+    {
+      "type": "observation",
+      "content": "Observation 11",
+      "confidence": 0.9,
+      "timestamp": "2026-02-20T22:40:52.512583",
+      "ttl_expires_at": "2026-02-20T23:40:52.512583"
+    },
+    {
+      "type": "observation",
+      "content": "Observation 12",
+      "confidence": 0.91,
+      "timestamp": "2026-02-20T22:40:52.512583",
+      "ttl_expires_at": "2026-02-20T23:40:52.512583"
+    }
+  ],
+  "long_term_memory": [
+    {
+      "learning": "Hungarian algorithm optimal for batch task allocation",
+      "success_rate": 0.95,
+      "category": "algorithms",
+      "stored_at": "2026-02-20T22:40:52.513582",
+      "expires_at": "2026-03-22T22:40:52.513582",
+      "access_count": 1,
+      "last_accessed": "2026-02-20T22:40:52.513582"
+    },
+    {
+      "learning": "Weather forecast critical for harvest scheduling",
+      "importance": "high",
+      "category": "planning",
+      "stored_at": "2026-02-20T22:40:52.513582",
+      "expires_at": "2026-03-22T22:40:52.513582",
+      "access_count": 0,
+      "last_accessed": null
+    }
+  ],
+  "working_memory": {
+    "execution_history": [
+      {
+        "step": 1,
+        "action": "gather_data"
+      }
+    ],
+    "data_cache": {
+      "field_001": "data_value"
+    },
+    "partial_results": {},
+    "insights": [
+      "Crop maturity optimal in Zone A"
+    ]
+  },
+  "config": {
+    "short_term": {
+      "enabled": true,
+      "max_messages": 10,
+      "ttl_seconds": 3600
+    },
+    "long_term": {
+      "enabled": true,
+      "retention_days": 30
+    }
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "agent_id": "AGENT-HARVEST-001",
+  "name": "Harvest Optimizer Agent",
+  "description": "Autonomous agent that optimizes harvest operations",
+  "version": "1.0.0",
+  "created_at": "2026-02-20T21:30:00Z",
+  
+  "capabilities": [
+    "data_analysis",
+    "decision_making",
+    "task_planning",
+    "resource_optimization"
+  ],
+  
+  "tools": [
+    {
+      "name": "precision_data",
+      "type": "data_source",
+      "endpoint": "http://localhost:5000/api/v1/recommendations",
+      "method": "GET",
+      "parameters": {
+        "field_id": "string"
+      },
+      "description": "Fetch field recommendations from Precision Platform"
+    },
+    {
+      "name": "ai_vision",
+      "type": "data_source",
+      "endpoint": "http://localhost:5001/api/v1/maturity",
+      "method": "GET",
+      "parameters": {
+        "field_id": "string"
+      },
+      "description": "Get crop maturity analysis from AI-Vision"
+    },
+    {
+      "name": "swarm_coordinator",
+      "type": "action",
+      "endpoint": "http://localhost:5002/api/v1/allocate",
+      "method": "POST",
+      "parameters": {
+        "tasks": "array",
+        "robots": "array"
+      },
+      "description": "Allocate tasks to robot swarm"
+    },
+    {
+      "name": "telemetry",
+      "type": "monitor",
+      "endpoint": "http://localhost:5003/api/v1/metrics",
+      "method": "GET",
+      "parameters": {
+        "robot_ids": "array",
+        "metrics": "array"
+      },
+      "description": "Monitor robot fleet telemetry"
+    },
+    {
+      "name": "weather_forecast",
+      "type": "external_api",
+      "endpoint": "https://api.openweathermap.org/data/2.5/forecast",
+      "method": "GET",
+      "parameters": {
+        "lat": "float",
+        "lon": "float"
+      },
+      "description": "Get weather forecast for planning"
+    }
+  ],
+  
+  "decision_model": {
+    "type": "llm",
+    "provider": "openai",
+    "model": "gpt-4",
+    "temperature": 0.7,
+    "max_tokens": 1000,
+    "system_prompt": "You are an agricultural optimization agent. Analyze data from multiple sources (field productivity, crop maturity, weather, robot fleet status) and make decisions about harvest timing, resource allocation, and task prioritization. Always prioritize safety, sustainability, and ROI. Output decisions in structured JSON format."
+  },
+  
+  "memory": {
+    "short_term": {
+      "enabled": true,
+      "max_messages": 10,
+      "ttl_seconds": 3600
+    },
+    "long_term": {
+      "enabled": true,
+      "storage": "redis",
+      "key_prefix": "agent:harvest_optimizer:",
+      "retention_days": 30
+    },
+    "embeddings": {
+      "enabled": true,
+      "model": "text-embedding-ada-002",
+      "dimensions": 1536,
+      "similarity_threshold": 0.8
+    }
+  },
+  
+  "planning": {
+    "strategy": "reactive_deliberative",
+    "horizon_hours": 48,
+    "replanning_interval_minutes": 30,
+    "constraints": {
+      "weather": {
+        "min_temp_celsius": 5,
+        "max_wind_kmh": 40,
+        "no_heavy_rain": true
+      },
+      "battery": {
+        "min_soc_percent": 30,
+        "reserve_kwh": 50
+      },
+      "daylight": {
+        "prefer_daylight": true,
+        "min_solar_elevation": 15
+      }
+    }
+  },
+  
+  "execution": {
+    "mode": "autonomous",
+    "approval_required": false,
+    "max_concurrent_tasks": 5,
+    "timeout_seconds": 300,
+    "retry_policy": {
+      "max_attempts": 3,
+      "backoff_seconds": 10,
+      "exponential": true
+    }
+  },
+  
+  "monitoring": {
+    "logging": {
+      "level": "INFO",
+      "destination": "file",
+      "path": "/var/log/agents/harvest_optimizer.log",
+      "rotation": "daily"
+    },
+    "metrics": {
+      "enabled": true,
+      "interval_seconds": 60,
+      "push_endpoint": "http://localhost:5003/api/v1/agent_metrics"
+    },
+    "alerts": {
+      "enabled": true,
+      "channels": ["email", "slack"],
+      "severity_threshold": "WARNING"
+    }
+  },
+  
+  "goals": [
+    {
+      "id": "maximize_harvest_efficiency",
+      "priority": "high",
+      "metrics": ["ha_per_hour", "fuel_consumption_per_ha"],
+      "target": {"ha_per_hour": 10, "fuel_efficiency": "increase"}
+    },
+    {
+      "id": "minimize_crop_loss",
+      "priority": "critical",
+      "metrics": ["overripe_percentage", "harvest_delay_hours"],
+      "target": {"overripe_percentage": "< 5%", "delay": "< 24h"}
+    },
+    {
+      "id": "optimize_battery_usage",
+      "priority": "medium",
+      "metrics": ["battery_cycles", "solar_utilization"],
+      "target": {"solar_utilization": "> 80%"}
+    }
+  ],
+  
+  "state": {
+    "status": "active",
+    "current_task": null,
+    "decisions_made": 0,
+    "success_rate": 0.0,
+    "uptime_hours": 0.0,
+    "last_decision_at": null
+  }
+}

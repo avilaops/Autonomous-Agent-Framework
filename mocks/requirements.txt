@@ -1,0 +1,72 @@
+# Autonomous Agent Framework - Production Dependencies
+# Mock version uses only Python stdlib, but production would require:
+
+# Core Framework
+# langchain>=0.1.0          # LLM integration and agent orchestration
+# openai>=1.0.0             # OpenAI API for GPT-4 decision model
+# anthropic>=0.8.0          # Claude API alternative
+# tiktoken>=0.5.0           # Token counting and optimization
+
+# Tool Execution
+# requests>=2.31.0          # HTTP requests for tool API calls
+# aiohttp>=3.9.0            # Async HTTP for parallel tool execution
+# httpx>=0.25.0             # Modern HTTP client with async support
+
+# Memory & State Management
+# redis>=5.0.0              # Redis for distributed state and caching
+# redisai>=1.0.0            # Redis AI for embedding storage
+# chromadb>=0.4.0           # Vector database for long-term memory
+# pinecone-client>=2.2.0    # Alternative vector DB
+
+# Embeddings & Search
+# sentence-transformers>=2.2.0  # Local embeddings model
+# faiss-cpu>=1.7.0          # Fast similarity search
+# numpy>=1.24.0             # Numerical operations
+
+# Planning & Reasoning
+# langchain-experimental>=0.0.40  # Advanced planning algorithms
+# transformers>=4.35.0      # Hugging Face models
+
+# Monitoring & Observability
+# prometheus-client>=0.18.0 # Metrics collection
+# opentelemetry-api>=1.21.0 # Distributed tracing
+# opentelemetry-sdk>=1.21.0
+# structlog>=23.2.0         # Structured logging
+
+# Configuration & Validation
+# pydantic>=2.5.0           # Data validation
+# python-dotenv>=1.0.0      # Environment management
+# pyyaml>=6.0.1             # YAML config files
+
+# Testing & Development
+# pytest>=7.4.0             # Testing framework
+# pytest-asyncio>=0.21.0    # Async test support
+# pytest-mock>=3.12.0       # Mocking
+# faker>=20.0.0             # Test data generation
+# hypothesis>=6.92.0        # Property-based testing
+
+# API & Web
+# fastapi>=0.104.0          # API framework (if exposing agent as service)
+# uvicorn>=0.24.0           # ASGI server
+# pydantic-settings>=2.1.0  # Settings management
+
+# Performance
+# gunicorn>=21.2.0          # Production WSGI server
+# gevent>=23.9.0            # Async workers
+# cachetools>=5.3.2         # In-memory caching
+
+# Security
+# python-jose>=3.3.0        # JWT tokens
+# passlib>=1.7.4            # Password hashing
+# cryptography>=41.0.0      # Encryption
+
+# Utilities
+# python-dateutil>=2.8.2    # Date manipulation
+# pytz>=2023.3              # Timezone support
+# tenacity>=8.2.3           # Retry logic
+# ratelimit>=2.2.1          # Rate limiting
+
+# Documentation
+# mkdocs>=1.5.0             # Documentation generator
+# mkdocs-material>=9.4.0    # Material theme
+# mkdocstrings>=0.24.0      # API docs from docstrings
